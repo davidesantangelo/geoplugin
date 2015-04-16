@@ -1,6 +1,6 @@
 # Geoplugin
 
-This is a Ruby wrapper library around the API provided by Geoplugin. Geoplugin is the easiest way for you to know where your visitors are from so that you can provide them with content more relevant to their geographical location. 
+This is a Ruby wrapper library around the API provided by <a href="http://www.geoplugin.com">Geoplugin</a>. Geoplugin is the easiest way for you to know where your visitors are from so that you can provide them with content more relevant to their geographical location. 
 
 ## Installation
 
@@ -38,6 +38,8 @@ location = Geoplugin.new('8.8.8.8', :ssl => true, :key => 'your geoplugin key')
 
 
 ```
+
+<i>To use the SSL web services, <a href="http://www.geoplugin.com/premium#ssl_access_per_year">an inexpensive key is required. </a></i>
 ## Attributes
 
 request, 
