@@ -15,10 +15,10 @@ Gem::Specification.new do |spec|
 
   spec.summary       = %q{This is a Ruby wrapper library around the API provided by Geoplugin (http://www.geoplugin.com) API.}
   spec.description   = %q{This is a Ruby wrapper library around the API provided by Geoplugin. Geoplugin is the easiest way for you to know where your visitors are from so that you can provide them with content more relevant to their geographical location.}
-  spec.homepage      = ""
+  spec.homepage      = "https://github.com/davidesantangelo/geoplugin"
   spec.license       = "MIT"
 
-  spec.files         = `git ls-files`.split($/)
+  spec.files         = ["lib/geoplugin.rb", "lib/geoplugin/locate.rb", "lib/geoplugin/version.rb"]
   spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ["lib"]
