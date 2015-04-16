@@ -1,6 +1,7 @@
 require 'faraday'
 require 'json'
 require 'ipaddress'
+require 'uri'
 
 API_URL = "http://www.geoplugin.net/json.gp"
 API_SSL_URL = "https://ssl.geoplugin.net/json.gp"
