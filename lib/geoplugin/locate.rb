@@ -46,43 +46,21 @@ module Geoplugin
       @currencyconverter = attributes["geoplugin_currencyConverter"]
     end
 
-    # locate with ip
-    def self.locate(ip)
+    # locate
+    def self.locate(ip = nil)
     	response = get_response(ip)
     	new(response) if not response.empty?
     end
 
-    def self.ssl_locate(key, ip)
-    	response = get_ssl_response(key, ip)
-    	new(response) if not response.empty?
-    end
-
-    #locate without ip
-    def self.locate_no_ip
-    	response = get_response
-    	new(response) if not response.empty?
-    end
-
-    def self.ssl_locate_no_ip(key)
-    	response = get_ssl_response(key)
+    def self.ssl_locate(ip = nil, key)
+    	response = get_response(ip, true, key)
     	new(response) if not response.empty?
     end
 
   private
-	  def self.get_response(ip = nil)
-
+	  def self.get_response(ip = nil, ssl = false, key = nil)
 	  	return [] if ip and not IPAddress.valid? ip
-	  
-	  	url = ip ? URI.parse(URI.encode("#{API_URL}?ip=#{ip}")) : URI.parse(URI.encode("#{API_URL}"))
-	    response = Faraday.get(url)
-	    return response.success? ? JSON.parse(response.body) : []
-	  end
-
-	  def self.get_ssl_response(key, ip = nil)
-
-	  	return [] if ip and not IPAddress.valid? ip
-
-	  	url = ip ? URI.parse(URI.encode("#{API_SSL_URL}?ip=#{ip}&k=#{key}")) : URI.parse(URI.encode("#{API_SSL_URL}?k=#{key}"))
+	  	url = URI.parse(URI.encode("#{ssl ? API_SSL_URL : API_URL}?#{ip ? 'ip=' + ip : ''}#{key ? '&k=' + key : ''}"))
 	    response = Faraday.get(url)
 	    return response.success? ? JSON.parse(response.body) : []
 	  end
