@@ -15,7 +15,7 @@ describe Geoplugin do
 
    it 'expect status 200 with ssl' do
   	VCR.use_cassette 'locate my ip with ssl' do
-    	response = Geoplugin.me(:ssl => true, :key => 'L6n7hPctXZnAKIvhLjH8qmZPpKNkVE')
+    	response = Geoplugin.me(:ssl => true, :key => 'your geoplugin key')
    		expect(response.status).to eq(200)
    	end
   end
@@ -29,7 +29,7 @@ describe Geoplugin do
 
   it 'get countryName United States with ip 8.8.8.8 with SSL' do
   	VCR.use_cassette 'locate ip 8.8.8.8 with ssl' do
-    	response = Geoplugin.new('8.8.8.8', :ssl => true, :key => 'L6n7hPctXZnAKIvhLjH8qmZPpKNkVE')
+    	response = Geoplugin.new('8.8.8.8', :ssl => true, :key => 'your geoplugin key')
    		expect(response.countryname).to eq('United States')
    	end
   end
