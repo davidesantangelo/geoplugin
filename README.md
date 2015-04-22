@@ -66,7 +66,9 @@ currencysymbol_utf,
 currencyconverter
 
 ## Credits
-Many thanks to Geoplugin for his implementation of the API.
+Many thanks to Geoplugin for his implementation of the API. 
+Geoplugin includes GeoLite data created by MaxMind, available from
+<a href="http://www.maxmind.com">http://www.maxmind.com</a>.
 
 ## License
 The restcountry GEM is released under the MIT License.
