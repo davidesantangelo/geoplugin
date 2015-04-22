@@ -7,26 +7,26 @@ API_URL = 'http://www.geoplugin.net/json.gp'
 API_SSL_URL = 'https://ssl.geoplugin.net/json.gp'
 
 module Geoplugin
-	class	Locate
-		attr_reader :request, 
-								:status, 
-								:city, 
-								:region, 
-								:areacode, 
-								:dmacode, 
-								:countrycode, 
-								:countryname, 
-								:continentcode, 
-								:latitude, 
-								:longitude, 
-								:regioncode, 
-								:regionname, 
-								:currencycode, 
-								:currencysymbol, 
-								:currencysymbol_utf, 
-								:currencyconverter
+  class	Locate
+    attr_reader :request,
+                :status,
+                :city,
+                :region,
+                :areacode,
+                :dmacode,
+                :countrycode,
+                :countryname,
+                :continentcode,
+                :latitude,
+                :longitude,
+                :regioncode,
+                :regionname,
+                :currencycode,
+                :currencysymbol,
+                :currencysymbol_utf,
+                :currencyconverter
 
-	  def initialize(attributes)
+    def initialize(attributes)
       @request = attributes['geoplugin_request']
       @status = attributes['geoplugin_status']
       @city = attributes['geoplugin_city']
@@ -47,23 +47,19 @@ module Geoplugin
     end
 
     # locate
-    def self.locate(ip = nil)
-    	response = apiresponse(ip)
-    	new(response) unless response.empty?
+    def self.locate(ip = nil, options)
+      response = apiresponse(ip, options)
+      new(response) unless response.empty?
     end
+    
+    private
 
-    def self.ssl_locate(ip = nil, key)
-    	response = apiresponse(ip, true, key)
-    	new(response) unless response.empty?
+    private_class_method 
+    def self.apiresponse(ip = nil, options = {})
+      return [] unless (not ip or IPAddress.valid? ip)
+      url = "#{options[:ssl] ? API_SSL_URL : API_URL}?#{ip ? 'ip=' + ip : ''}#{options[:key] ? '&k=' + options[:key] : ''}#{options[:base_currency] ? '&base_currency=' + options[:base_currency] : ''}"
+      response = Faraday.get(URI.parse(URI.encode(url)))
+      response.success? ? JSON.parse(response.body) : []
     end
-
-  private
-
-	  private_class_method def self.apiresponse(ip = nil, ssl = false, key = nil)
-	  	return [] if ip and not IPAddress.valid? ip
-      url = URI.parse(URI.encode("#{ssl ? API_SSL_URL : API_URL}?#{ip ? 'ip=' + ip : ''}#{key ? '&k=' + key : ''}"))
-	    response = Faraday.get(url)
-	    response.success? ? JSON.parse(response.body) : []
-	  end
-	end
+  end
 end

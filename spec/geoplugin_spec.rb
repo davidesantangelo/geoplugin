@@ -33,4 +33,11 @@ describe Geoplugin do
    		expect(response.countryname).to eq('United States')
    	end
   end
+
+  it 'get currencyconverter 1 with currency USD and ip 8.8.8.8' do
+    VCR.use_cassette 'locate 8.8.8.8 ip with currency USD' do
+      response = Geoplugin.new('8.8.8.8', :base_currency => "USD")
+      expect(response.currencyconverter).to eq(1)
+    end
+  end
 end

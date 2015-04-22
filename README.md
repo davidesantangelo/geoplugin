@@ -36,6 +36,11 @@ location = Geoplugin.new('8.8.8.8')
 # Find my location with ssl
 location = Geoplugin.new('8.8.8.8', :ssl => true, :key => 'your geoplugin key')
 
+Like all calls to any of geoPlugin's web services, the default base_currency is USD ($US). 
+Thus, if your base currency is NOT $US, then you must add the variable base_currency=XXX to the call like this:
+
+location = Geoplugin.new('151.72.254.22', :base_currency => "EUR")
+location = Geoplugin.me(:base_currency => "EUR")
 
 ```
 
