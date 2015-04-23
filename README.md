@@ -2,6 +2,10 @@
 
 This is a Ruby wrapper library around the API provided by <a target="_BLANK" href="http://www.geoplugin.com">Geoplugin</a>. Geoplugin is the easiest way for you to know where your visitors are from so that you can provide them with content more relevant to their geographical location. 
 
+## See it in action!
+
+You can try Geoplugin live at this little demo: [https://geopweb.herokuapp.com](https://geopweb.herokuapp.com)
+
 ## Installation
 
 Add this line to your application's Gemfile:
@@ -36,8 +40,8 @@ location = Geoplugin.new('8.8.8.8')
 # Find my location with ssl
 location = Geoplugin.new('8.8.8.8', :ssl => true, :key => 'your geoplugin key')
 
-Like all calls to any of geoPlugin's web services, the default base_currency is USD ($US). 
-Thus, if your base currency is NOT $US, then you must add the variable base_currency=XXX to the call like this:
+#Like all calls to any of geoPlugin's web services, the default base_currency is USD ($US). 
+#Thus, if your base currency is NOT $US, then you must add the variable base_currency=XXX to the call like this:
 
 location = Geoplugin.new('151.72.254.22', :base_currency => "EUR")
 location = Geoplugin.me(:base_currency => "EUR")
