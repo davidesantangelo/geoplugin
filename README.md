@@ -4,7 +4,8 @@ This is a Ruby wrapper library around the API provided by <a target="_BLANK" hre
 
 ## See it in action!
 
-You can try MetaInspector live at this little demo: [https://metainspectordemo.herokuapp.com](https://metainspectordemo.herokuapp.com)
+You can try Geoplugin live at this little demo: [https://geopweb.herokuapp.com](https://geopweb.herokuapp.com)
+
 ## Installation
 
 Add this line to your application's Gemfile:
