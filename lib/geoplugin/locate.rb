@@ -57,7 +57,7 @@ module Geoplugin
     private_class_method 
     def self.apiresponse(ip = nil, options = {})
       return [] unless (not ip or IPAddress.valid? ip)
-      url = "#{options[:ssl] ? API_SSL_URL : API_URL}?#{ip ? 'ip=' + ip : ''}#{options[:key] ? '&k=' + options[:key] : ''}#{options[:base_currency] ? '&base_currency=' + options[:base_currency] : ''}"
+      url = "#{options[:ssl] ? API_SSL_URL : API_URL}?#{ip ? 'ip=' + ip : '?jsoncallback=?'}#{options[:key] ? '&k=' + options[:key] : ''}#{options[:base_currency] ? '&base_currency=' + options[:base_currency] : ''}"
       response = Faraday.get(URI.parse(URI.encode(url)))
       response.success? ? JSON.parse(response.body) : []
     end
