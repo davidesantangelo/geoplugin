@@ -2,6 +2,9 @@
 
 This is a Ruby wrapper library around the API provided by <a target="_BLANK" href="http://www.geoplugin.com">Geoplugin</a>. Geoplugin is the easiest way for you to know where your visitors are from so that you can provide them with content more relevant to their geographical location. 
 
+## See it in action!
+
+You can try MetaInspector live at this little demo: [https://metainspectordemo.herokuapp.com](https://metainspectordemo.herokuapp.com)
 ## Installation
 
 Add this line to your application's Gemfile:
