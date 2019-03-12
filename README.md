@@ -33,7 +33,6 @@ location = Geoplugin.me
 # Find my location with ssl
 location = Geoplugin.me(:ssl => true, :key => 'your geoplugin key')
 
-
 # Find ip location with ssl
 location = Geoplugin.new('8.8.8.8')
 
